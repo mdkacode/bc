@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonCard, IonCardContent, IonIcon, IonLabel, IonImg } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonItem, IonCard, IonCardContent, IonIcon, IonLabel, IonImg, IonModal, IonButton } from '@ionic/react';
 import './Tab1.css';
 import { download, play } from 'ionicons/icons';
 import Axios  from "axios";
@@ -11,7 +11,9 @@ const Tab1: React.FC = () => {
   const [viedoData, isviedoData ] = useState([]);
   const [getList,isGetList]  = useState(true);
 
-
+  const [getModal,setList]  = useState(false);
+  const [getVid,setVid]  = useState("");
+  
   if (getList)
   {
     Axios.request({
@@ -23,15 +25,24 @@ const Tab1: React.FC = () => {
     })
   }
 
-  const playViedo = () =>{
-    console.log(Play)
-    isPlay(true)
+ 
+  const playViedo = ( e:any ) =>{
+    console.log(e)
+    setList(true)
+    setVid(e)
   }
   return (
     <IonPage>
+
+{getModal && <IonModal isOpen={getModal}>
+        <video src={getVid} autoPlay controls />
+        <IonButton onClick={() => setList(false)}>Close</IonButton>
+      </IonModal>}
+
+      
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>Tik Tok </IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -52,7 +63,7 @@ const Tab1: React.FC = () => {
               <a download="foo.txt"  href={e.vedioUrl}  >
             <IonIcon icon={download} color={"danger"} />
             </a>
-            <IonIcon icon={play} onClick={playViedo} color={"success"} slot={"end"}/>
+            <IonIcon icon={play} onClick={() => playViedo( e.vedioUrl )} color={"success"} slot={"end"}/>
           
             </IonItem>
           </IonCardContent>
