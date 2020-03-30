@@ -1,0 +1,9 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+.video-cafe, .vid-image{
+  width: 100%;
+  height: 100%;
+}
+

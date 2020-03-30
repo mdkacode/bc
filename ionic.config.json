@@ -1,0 +1,7 @@
+{
+  "name": "viedoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
