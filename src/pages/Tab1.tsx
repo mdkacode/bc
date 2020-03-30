@@ -12,7 +12,9 @@ const Tab1: React.FC = () => {
   const [getList,isGetList]  = useState(true);
 
   const [getModal,setList]  = useState(false);
-  const [getVid,setVid]  = useState("");
+  const [getVid,setVid]  = useState({vedioUrl:""});
+  const [getVidIndex,setVidIndex]  = useState(1);
+  const [getcounter,setcounter]  = useState(1);
   
   if (getList)
   {
@@ -26,16 +28,28 @@ const Tab1: React.FC = () => {
   }
 
  
-  const playViedo = ( e:any ) =>{
-    console.log(e)
+  const playViedo = ( e:any,index:number ) =>{
+    
     setList(true)
+    setVidIndex(index)
     setVid(e)
+  }
+  const nextVedio =()=>{
+    let data = viedoData;
+    console.log(data[getVidIndex+getcounter])
+    setVid(data[getVidIndex+getcounter])
+    setcounter(getcounter+1)
+  }
+  const onClose =()=>{
+    setList(false);
+    setcounter(1)
   }
   return (
     <>
     {getModal && <IonModal isOpen={getModal}>
-        <video src={getVid} className="video-cafe" autoPlay controls />
-        <IonButton onClick={() => setList(false)}>Close</IonButton>
+        <video src={getVid.vedioUrl} className="video-cafe" autoPlay controls />
+        <IonButton color="danger" onClick={() => nextVedio()}>Next</IonButton>
+        <IonButton onClick={() => onClose()}>Close</IonButton>
       </IonModal>}
     <IonPage>
 
@@ -51,8 +65,8 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeaders> */}
-{viedoData.map((e:any)=>{
-  return <IonCard  onClick={() => playViedo( e.vedioUrl )}>
+{viedoData.map((e:any,index)=>{
+  return <IonCard  onClick={() => playViedo( e,index )}>
           <IonImg className="vid-image"   src={e.picture} />
           
 
@@ -62,7 +76,7 @@ const Tab1: React.FC = () => {
               <a download="foo.txt"  href={e.vedioUrl}  >
             <IonIcon icon={download} color={"danger"} />
             </a>
-            <IonIcon icon={play} onClick={() => playViedo( e.vedioUrl )} color={"success"} slot={"end"}/>
+            <IonIcon icon={play} onClick={() => playViedo( e,index )} color={"success"} slot={"end"}/>
           
             </IonItem>
           </IonCardContent>
