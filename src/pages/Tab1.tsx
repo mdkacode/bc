@@ -12,7 +12,7 @@ const Tab1: React.FC = () => {
 
   Axios.request({
     method:"GET",
-    url:"http://192.168.0.102:7000/vpost"
+    url:"http://34.93.156.149:7000/vpost"
   }).then((e:any) =>{
     isviedoData( e.data.data )
   })
