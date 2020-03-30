@@ -22,29 +22,25 @@ const pull_request = async (length,client) =>{
     let data  =  await axios.request({
         url:'https://www.tiktok.com/share/item/list',
         method:'GET',
+        headers:{
+          "Set-Cookie":"bm_sv=1702D61C2C137F8F4E4F6D51499A475F~MVFUw6EaYE3ir9ekTKkqcP0ZqctsYAebo/P8HJBcNN+yUPv34qRAx7+iJf24+ycBzzjtv6PvtL7Mh9anGvQ/K/+M6XBhpcuRrmoduVjS2r+rwltu8N9Qua61jhJr7fGCDj5zWCm9Ysfsbz2lS16iP1V01I879YDQxO/RkraU5Kc=; Domain=.tiktok.com; Path=/; HttpOnly",
+        },
         params:{
             secUid:'',
             id:'',
             type:5,
-            count:30,
+            count:50,
             minCursor:0,
             maxCursor:0,
-            region:"in",
+            region:"pk",
             shareUid:null,
-            lang:'en',
+            lang:'hi',
         }   
     })
     let {itemListData} = data.data.body;
-    try {
-      client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
-    return { data: itemListData ? get_proper_data(itemListData) : 'No live Data Found',size:itemListData ? itemListData.length:0};
-      
-    } catch (error) {
-      client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
-    return { data: 'No live Data Found',size:0};
-      
-    }
     
+    client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
+    return { data: itemListData ? get_proper_data(itemListData) : 'No live Data Found',size:itemListData ? itemListData.length:0};
   }
     
 
