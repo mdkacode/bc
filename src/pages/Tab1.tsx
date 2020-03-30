@@ -57,7 +57,7 @@ const Tab1: React.FC = () => {
           <IonImg className="vid-image" src={e.picture} />
           
 
-          <IonCardContent>
+          <IonCardContent onClick={() => playViedo( e.vedioUrl )} >
             <IonItem>
               <IonLabel>{e.title}</IonLabel>
               <a download="foo.txt"  href={e.vedioUrl}  >
