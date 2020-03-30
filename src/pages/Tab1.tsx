@@ -32,14 +32,13 @@ const Tab1: React.FC = () => {
     setVid(e)
   }
   return (
-    <IonPage>
-
-{getModal && <IonModal isOpen={getModal}>
-        <video src={getVid} autoPlay controls />
+    <>
+    {getModal && <IonModal isOpen={getModal}>
+        <video src={getVid} className="video-cafe" autoPlay controls />
         <IonButton onClick={() => setList(false)}>Close</IonButton>
       </IonModal>}
+    <IonPage>
 
-      
       <IonHeader>
         <IonToolbar>
           <IonTitle>Tik Tok </IonTitle>
@@ -53,12 +52,12 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeaders> */}
 {viedoData.map((e:any)=>{
-  return <IonCard>
-          <IonImg className="vid-image" src={e.picture} />
+  return <IonCard  onClick={() => playViedo( e.vedioUrl )}>
+          <IonImg className="vid-image"   src={e.picture} />
           
 
-          <IonCardContent onClick={() => playViedo( e.vedioUrl )} >
-            <IonItem>
+          <IonCardContent >
+            <IonItem >
               <IonLabel>{e.title}</IonLabel>
               <a download="foo.txt"  href={e.vedioUrl}  >
             <IonIcon icon={download} color={"danger"} />
@@ -72,6 +71,7 @@ const Tab1: React.FC = () => {
 })}
       </IonContent>
     </IonPage>
+    </>
   );
 };
 export default Tab1;
