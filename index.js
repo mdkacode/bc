@@ -28,8 +28,10 @@ App.get('/health',(req,res,next)=>{
 })
 
 App.get('/vpost',async (req,res,next) =>{
+
    console.log(req.query)
-  let data = await pull_request(req.query.item  || 10,client)
+  let data = await pull_request(req.query.item  || 10,client);
+//   req.connection.setTimeout(60*10*1000)
   res.send(data);
 })
 

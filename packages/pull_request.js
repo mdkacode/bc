@@ -26,17 +26,25 @@ const pull_request = async (length,client) =>{
             secUid:'',
             id:'',
             type:5,
-            count:50,
+            count:30,
             minCursor:0,
             maxCursor:0,
-            region:"pk",
+            region:"in",
             shareUid:null,
             lang:'en',
         }   
     })
     let {itemListData} = data.data.body;
-    client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
+    try {
+      client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
     return { data: itemListData ? get_proper_data(itemListData) : 'No live Data Found',size:itemListData ? itemListData.length:0};
+      
+    } catch (error) {
+      client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
+    return { data: 'No live Data Found',size:0};
+      
+    }
+    
   }
     
 
