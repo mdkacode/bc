@@ -9,7 +9,7 @@ const Tab1: React.FC = () => {
 
   const [Play, isPlay ] = useState(false);
   const [viedoData, isviedoData ] = useState([]);
-  const [getList,isGetList]  = useState(false);
+  const [getList,isGetList]  = useState(true);
 
 
   if (getList)
