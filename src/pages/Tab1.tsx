@@ -48,6 +48,7 @@ const Tab1: React.FC = () => {
     console.log(data[getVidIndex+getcounter])
     setVid(data[getVidIndex+getcounter])
     setcounter(getcounter+1)
+    setVedioPlay(true)
   }
   const onClose =()=>{
     setList(false);
