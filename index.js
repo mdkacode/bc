@@ -48,8 +48,16 @@ App.get('/youtubeList',async (req,res,next) =>{
 
 App.get('/serve',(req,res)=>{
 
-  req.query.name
-  var path = `vedio/${req.query.name}.mp4`;
+  var video_id = '';
+  if(req.query.name.includes("youtube"))
+  {
+    video_id = req.query.name.split('v=')[1];
+  }
+  else{
+    video_id = req.query.name;
+  }
+  
+  var path = `vedio/${video_id}.mp4`;
   var stat = fs.statSync(path);
   var total = stat.size;
   if (req.headers['range']) {

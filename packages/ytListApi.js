@@ -4,10 +4,6 @@ const clientdd = asyncRedis.createClient();
 const fs = require('fs');
 const ytResult = async (string,client)=>{
 
- 
-    fs.readFileSync('../vedio').forEach(e=>{
-        console.log(e)
-    })
        let vedioData =  await clientdd.get(string)
 
 
@@ -22,6 +18,7 @@ try {
         e.id.videoId && ytArray.push({
             title: e.snippet.title,
             vedioUrl: `${prefix}${e.id.videoId}`,
+            vId:`${e.id.videoId}`,
             picture:e.snippet.thumbnails.high.url
         })
     })
