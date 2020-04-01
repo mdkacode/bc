@@ -49,11 +49,11 @@ const App: React.FC = () => (
             <IonIcon icon={triangle} />
             <IonLabel>Tik Tok</IonLabel>
           </IonTabButton>
-          {/* <IonTabButton tab="tab2" href="/tab2">
+           <IonTabButton tab="tab2" href="/tab2">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>You Tube</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          {/*<IonTabButton tab="tab3" href="/tab3">
             <IonIcon icon={square} />
             <IonLabel>Tab 3</IonLabel>
           </IonTabButton> */}
