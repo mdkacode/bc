@@ -27,7 +27,7 @@ const Tab2: React.FC = () => {
   {
     Axios.request({
       method:"GET",
-      url:"http://192.168.0.102:7000/youtubeList?name=Top Punjabi Songs"
+      url:"http://34.93.156.149:7000/youtubeList?name=Top Punjabi Songs"
     }).then((e:any) =>{
       isviedoData( e.data.data );
 
@@ -64,7 +64,7 @@ const Tab2: React.FC = () => {
         {/* <video src={getVid.vedioUrl} className="video-cafe" autoPlay controls /> */}
         <div onClick={ (e) => pauseVedio(isVedioPlay)} className='wrapper'>
         <ReactPlayer
-          url={`http://192.168.0.102:7000/serve?name=${getVid.vId}`}
+          url={`http://34.93.156.149:7000/serve?name=${getVid.vId}`}
           playing={isVedioPlay}
           width='100%'
           height="100vh"
