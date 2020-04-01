@@ -1,4 +1,3 @@
-const TikTokScraper = require('tiktok-scraper');
 
 let da;
 const axios = require('axios').default;

@@ -57,7 +57,7 @@ App.get('/serve',(req,res)=>{
     video_id = req.query.name;
   }
   
-  var path = `vedio/${video_id}.mp4`;
+  var path = `packages/vedio/${video_id}.mp4`;
   var stat = fs.statSync(path);
   var total = stat.size;
   if (req.headers['range']) {
