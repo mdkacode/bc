@@ -14,6 +14,7 @@ App.use(responseTime());
 
 //Local Import Start
 const pull_request = require('./packages/pull_request')
+const ytResult = require('./packages/ytListApi');
 //Local Import End
 
 App.use(cors()) // enable cors
@@ -33,6 +34,12 @@ App.get('/vpost',async (req,res,next) =>{
   let data = await pull_request(req.query.item  || 10,client);
 //   req.connection.setTimeout(60*10*1000)
   res.send(data);
+})
+
+App.get('/youtubeList',async (req,res,next) =>{
+
+ let data = await ytResult((req.query.name || 'Top Hindi Songs'),client);
+ res.send( data );
 })
 
 
