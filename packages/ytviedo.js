@@ -47,14 +47,12 @@ cron.schedule('*/20 * * * *', () => {
 
 })
 
-GetVedios('Trending Vedios',10)
-
 const downloadVedios = async (ytArray)=> {
 
     await ytArray.forEach(async e=>{
 
         console.log(e.vedioUrl)
-      childProcss.execSync(`youtube-dl -o ${e.vedioUrl}.mp4 ${e.vedioUrl}`, {stdio: 'inherit'})
+      childProcss.execSync(`youtube-dl -o vedio/${e.vedioUrl}.mp4 ${e.vedioUrl}`, {stdio: 'inherit'})
     })
 
 }

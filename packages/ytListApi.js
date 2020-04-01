@@ -1,21 +1,23 @@
 
 const asyncRedis = require("async-redis");
 const clientdd = asyncRedis.createClient();
-let da;
+const fs = require('fs');
 const ytResult = async (string,client)=>{
-let newDd = '';
-    console.log( string )
-let newD = '';
-       let da =  await clientdd.get(string)
+
+ 
+    fs.readFileSync('../vedio').forEach(e=>{
+        console.log(e)
+    })
+       let vedioData =  await clientdd.get(string)
 
 
 
-console.log(da)
-da = JSON.parse(da);
+console.log(vedioData)
+vedioData = JSON.parse(vedioData);
 try {
     let prefix = "https://www.youtube.com/watch?v=";
     let ytArray = [];
-    let itemData = da.items;
+    let itemData = vedioData.items;
     itemData.map(e=>{
         e.id.videoId && ytArray.push({
             title: e.snippet.title,
@@ -29,7 +31,7 @@ try {
 } catch (error) {
     
 }
- return da;
+ return vedioData;
 
 }
 
