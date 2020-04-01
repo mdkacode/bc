@@ -19,13 +19,13 @@ try {
     itemData.map(e=>{
         e.id.videoId && ytArray.push({
             title: e.snippet.title,
-            ytLink: `${prefix}${e.id.videoId}`,
-            banner:e.snippet.thumbnails.high.url
+            vedioUrl: `${prefix}${e.id.videoId}`,
+            picture:e.snippet.thumbnails.high.url
         })
     })
 
    
-    return  {length:ytArray.length, item:ytArray};
+    return  {length:ytArray.length, data:ytArray};
 } catch (error) {
     
 }
