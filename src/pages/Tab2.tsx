@@ -69,7 +69,7 @@ const Tab2: React.FC = () => {
           width='100%'
           height="100vh"
           className='player'
-          controls
+          controls={true}
           loop
         />
         <div className='overlay'>
