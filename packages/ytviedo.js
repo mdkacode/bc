@@ -54,7 +54,7 @@ const downloadVedios = async (ytArray)=> {
     await ytArray.forEach(async e=>{
 
         console.log(e.vedioUrl)
-      childProcss.execSync(`youtube-dl -o vedio/${e.vedioUrl}.mp4 ${e.vedioUrl}`, {stdio: 'inherit'})
+      childProcss.execSync(`youtube-dl -o vedio/${e.vedioUrl}.mp4 ${e.vedioUrl} --match-filter 'duration < 300'`, {stdio: 'inherit'})
     })
 
 }
