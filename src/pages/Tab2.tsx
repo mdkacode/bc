@@ -27,7 +27,7 @@ const Tab2: React.FC = () => {
   {
     Axios.request({
       method:"GET",
-      url:"http://34.93.156.149:7000/youtubeList?name=Top Punjabi Songs"
+      url:"http://34.93.156.149:7000/youtubeList?name=punjabi songs,hd"
     }).then((e:any) =>{
       isviedoData( e.data.data );
 
