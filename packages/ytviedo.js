@@ -40,14 +40,14 @@ const GetVedios = async (vedioString,length) =>{
 cron.schedule('*/20 * * * *', () => {
     // GetVedios('Top Hindi Songs',40);
     // GetVedios('Top English Songs',40);
-    GetVedios('Top Punjabi Songs',40);
+    GetVedios('punjabi songs,hd',40);
     // GetVedios('Top Party Songs',40);
     // GetVedios('Trending Vedios',40);
 
 
 })
 
-GetVedios('Top Punjabi Songs',40);
+GetVedios('punjabi songs,hd',40);
 
 const downloadVedios = async (ytArray)=> {
 
