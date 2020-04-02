@@ -65,10 +65,11 @@ const Tab2: React.FC = () => {
         <div onClick={ (e) => pauseVedio(isVedioPlay)} className='wrapper'>
         <ReactPlayer
           url={`http://34.93.156.149:7000/serve?name=${getVid.vId}`}
-          playing={isVedioPlay}
+          playing
           width='100%'
           height="100vh"
           className='player'
+          controls
           loop
         />
         <div className='overlay'>
