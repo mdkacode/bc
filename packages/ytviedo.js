@@ -1,7 +1,6 @@
 var YouTube = require('youtube-node');
 const redis = require('redis');
 const env = require('dotenv').config();
-const download_vedio = require("./ytdl");
 // const { PORT,REDISPORT } = env.parsed; // destructure env file here 
 const client = redis.createClient(6379);
 const childProcss = require("child_process");

@@ -1,19 +1,25 @@
 
 let da;
 const axios = require('axios').default;
+
+const asyncRedis = require("async-redis");
+const clientdd = asyncRedis.createClient();
+
 const pull_request = async (length,client) =>{
 
+let finalData = []
+  let data  = await clientdd.lrange('tiktokList',0,-1);
+ 
+  for (let items in data ){
+    let parsedData = JSON.parse(data[items])
+    finalData.push(...parsedData)
+  }
 
-  await client.get('hashtag', (error,data) => { 
-          da = JSON.parse( data );
-  });
-
-
-  if (da)
+  if (finalData)
   {
     console.log('get redis');
 
-    return { data: da ?  da  : 'No Data Found',size:da ? da.length:0};
+    return { data: finalData ?  finalData  : 'No Data Found',size:finalData ? finalData.length:0};
   }
   else {
 
@@ -38,7 +44,8 @@ const pull_request = async (length,client) =>{
     })
     let {itemListData} = data.data.body;
     
-    client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)))
+    // client.setex('hashtag',300,JSON.stringify(get_proper_data(itemListData)));
+    client.lpush("tiktokList",JSON.stringify(get_proper_data(itemListData)))
     return { data: itemListData ? get_proper_data(itemListData) : 'No live Data Found',size:itemListData ? itemListData.length:0};
   }
     
@@ -54,9 +61,8 @@ module.exports =  pull_request
 function get_proper_data (arrayList) {
     let tempArray = []
 
-    arrayList.forEach(e=>{
+    arrayList.forEach(e => {
       //  console.log(e);
-     
         (e.itemInfos.text && e.itemInfos.video.urls[0]) && tempArray.push({
             title : e.itemInfos.text,
             vedioUrl:e.itemInfos.video.urls[0],
