@@ -34,9 +34,16 @@ App.get('/health',(req,res,next)=>{
 App.get('/vpost',async (req,res,next) =>{
 
    console.log(req.query)
-  let data = await pull_request(req.query.item  || 10,client);
+  let data = await pull_request(req.query.item ,client);
 //   req.connection.setTimeout(60*10*1000)
   res.send(data);
+})
+
+App.get('/disclamer',async (req,res,next)=>{
+
+  const text = `All the videos Shown here are craweld and we are not owner of it, Videos here are coming from
+  the various Sources such as youtube, tiktok, hello App.`;
+  res.send({content:text});
 })
 
 App.get('/youtubeList',async (req,res,next) =>{

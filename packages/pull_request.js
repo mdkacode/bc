@@ -4,11 +4,19 @@ const axios = require('axios').default;
 
 const asyncRedis = require("async-redis");
 const clientdd = asyncRedis.createClient();
-
-const pull_request = async (length,client) =>{
+let data = []
+const pull_request = async (length=1,client) =>{
 
 let finalData = []
-  let data  = await clientdd.lrange('tiktokList',0,-1);
+if (length > 1)
+{
+   data  = await clientdd.lrange('tiktokList',length-1,length);
+}
+else 
+{
+   data  = await clientdd.lrange('tiktokList',0,1);
+}
+  
  
   for (let items in data ){
     let parsedData = JSON.parse(data[items])
