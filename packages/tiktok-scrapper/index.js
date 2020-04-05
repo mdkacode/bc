@@ -55,5 +55,6 @@ cron.schedule('0 4 * * *', () => {
 
 
   trendsHashCheck('funny',50);
-  trendsHashCheck('modi',50);
-  trendsHashCheck('lockDown',50);
+  trendsHashCheck('hindi',50);
+trendsHashCheck('hindiFunny',50);
+trendsHashCheck('modiFunny',50);
