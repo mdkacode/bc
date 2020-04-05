@@ -27,10 +27,14 @@ const trendsHashCheck = async ( trendCheck,count=50 ) => {
     }
 };
 
-cron.schedule('*/20 * * * *', () => {
+cron.schedule('*/30 * * * *', () => {
     trendsHashCheck('funny',500);
-    trendsHashCheck('modi',500);
-    trendsHashCheck('lockDown',500);
+    trendsHashCheck('hindi',100);
+    trendsHashCheck('hindiFunny',100);
+    trendsHashCheck('songs',100);
+    trendsHashCheck('modi',100);
+    trendsHashCheck('indianArmy',100);
+    trendsHashCheck('trumpFunny',100);
 });
 
 cron.schedule('0 4 * * *', () => {
